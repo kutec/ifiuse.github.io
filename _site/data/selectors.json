@@ -1,0 +1,44 @@
+[
+	{ 
+		"jq"	: "$('*')", 
+		"js"	: "document.getElementsByTagName('*')",
+		"ng"	: "Angular Content Goes here!",
+		"yui"	: "Y.all('*')",
+		"aui"	: "A.all('*')"
+	},
+	{ 
+		"jq"	: "$('#id')", 
+		"js"	: "document.getElementById('id')",
+		"ng"	: "angular.element($('#id'))",
+		"yui"	: "Y.one('#id')",
+		"aui"	: "A.one('#id')"
+	},
+	{ 
+		"jq"	: "$('.class')",
+		"js"	: "document.getElementsByClassName('class')[0]",
+		"ng"	: "angular.element($('.class'))",
+		"yui"	: "Y.one('.class')",
+		"aui"	: "A.one('.class')"
+	},
+	{ 
+		"jq"	: "$(':button')",
+	  	"js"	: "document.getElementsByClassName('class')[0]",
+	  	"ng"	: "angular.element($('.class'))",
+	  	"yui"	: "Y.one('.class')",
+	  	"aui"	: "A.one('.class')"
+	},
+	{ 
+		"jq"	: "$(':checkbox')",
+	  	"js"	: "document.querySelectorAll('input[type=\"checkbox\"]')",
+	  	"ng"	: "angular.element($(':checkbox'))",
+	  	"yui"	: "Y.all('input[type=checkbox]')",
+	  	"aui"	: "A.all(':checkbox')"
+	},
+	{ 
+		"jq"	: "$(':checked')",
+	  	"js"	: "document.getElementById('checkbox').checked",
+	  	"ng"	: "angular.element($(':checked'))",
+	  	"yui"	: "Y.all(':checked')",
+	  	"aui"	: "A.all(':checked')"
+	}
+]

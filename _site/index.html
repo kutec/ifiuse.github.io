@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title>if(iUse) - JavaScript Comparision Tool</title>
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/prism.css" />
+</head>
+<body ng-controller="GlobalCtrl">
+	
+	<header class="sticky clearfix">
+		<div class="container">
+			<h1 class="logo">if(iUse)</h1>
+			<ul class="filters">
+				<li>
+					<input type="checkbox" checked="checked" id="chk-jq" ng-click="jqToggle = !jqToggle">
+					<label for="chk-jq" class="btn-jq">Jquery</label>
+				</li>
+				<li>
+					<input type="checkbox" id="chk-js" ng-click="jsToggle = !jsToggle">
+					<label for="chk-js" class="btn-js">Javascript</label>
+				</li>
+				<li>
+					<input type="checkbox" id="chk-ng" ng-click="ngToggle = !ngToggle">
+					<label for="chk-ng" class="btn-ng">Angular</label>
+				</li>
+				<li>
+					<input type="checkbox" id="chk-yui" ng-click="yuiToggle = !yuiToggle">
+					<label for="chk-yui" class="btn-yui">YUI</label>
+				</li>
+				<li>
+					<input type="checkbox" id="chk-aui" ng-click="auiToggle = !auiToggle">
+					<label for="chk-aui" class="btn-aui">AUI</label>
+				</li>
+			</ul>
+			
+			<input type="text" class="searchCode" ng-model="searchCode" placeholder="Search query...">
+		</div>
+	</header>
+	
+	<div class="box-wrapper" ng-controller="SelectorCtrl">
+		<div class="card-group card-group-head">
+			<div class="card card-head" id="box-jq" ng-hide="jqToggle">  
+				<div class="card-block">
+				  <h2>Jquery<span>(vs 2.1.1)</span></h2>
+				</div>
+			</div>
+			<div class="card card-head" id="box-js" ng-hide="jsToggle">   
+				<div class="card-block">
+				  <h2>Javascript<span>(vs 1.8.5)</span></h2>
+				</div>
+			</div>
+			<div class="card card-head" id="box-ng" ng-hide="ngToggle">
+				<div class="card-block">
+				  <h2>Angular<span>(vs 1.4.4)</span></h2>
+				</div>
+			</div>
+			<div class="card card-head" id="box-yui" ng-show="yuiToggle">
+				<div class="card-block">
+				  <h2>YUI<span>(vs 3.8.0)</span></h2>
+				</div>
+			</div>
+			<div class="card card-head" id="box-aui" ng-show="auiToggle">
+				<div class="card-block">
+				  <h2>AUI<span>(vs 3.0.0)</span></h2>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<h2 class="heading-group sticky">
+				Selectors
+			</h2>
+			
+			<div class="card-group" ng-repeat="selector in selectors | filter:searchCode">
+				<div class="card" ng-hide="jqToggle">
+					<div class="card-block">
+						<pre class="card-text language-javascript"><code class="langauge-javascript">{{selector.jq}}</code></pre>
+					</div>
+				</div>
+				<div class="card" ng-hide="jsToggle">
+					<div class="card-block">
+						<pre class="card-text language-javascript"><code class="langauge-javascript">{{selector.js}}</code></pre>
+					</div>
+				</div>
+				<div class="card" ng-hide="ngToggle">
+					<div class="card-block">
+						<pre class="card-text language-javascript"><code class="langauge-javascript">{{selector.ng}}</code></pre>
+					</div>
+				</div>
+				<div class="card" ng-show="yuiToggle">
+					<div class="card-block">
+						<pre class="card-text language-javascript"><code class="langauge-javascript">{{selector.yui}}</code></pre>
+					</div>
+				</div>
+				<div class="card" ng-show="auiToggle">
+					<div class="card-block">
+						<pre class="card-text language-javascript"><code class="langauge-javascript">{{selector.aui}}</code></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/prism.js"></script>
+	<script>
+	var app = angular.module('app', []);
+		
+	app.controller('GlobalCtrl', function($scope){
+		
+		// set the default search snippet 
+		$scope.searchCode   = '';
+	});
+	
+	// selectors
+	app.controller('SelectorCtrl', function($scope, $http) {
+		
+		
+		$http.get('data/selectors.json')
+		   .then(function(res){
+		      $scope.selectors = res.data;
+		      console.log("app.length");                
+        });
+	});
+	</script>
+</body>
+</html>

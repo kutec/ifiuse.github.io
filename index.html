@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html lang="en-US" ng-app="ifIUseApp">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>if(iUse)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/prism.css" />
+<script type="text/javascript" src="js/angular.min.js"></script>
+</head>
+<body ng-controller="ifIUseCtrl">
+	<!-- side menu start -->
+	<nav class="side-navigation">
+		<a class="close-nav" href="javascript:void(0)">X</a>
+		<div class="intro">ifiuse.com is simple JS comparison gallery to compare latest and most useful JS libraries and frameworks like jQuery, Javascript, Angular JS, YUI and AUI. User can Search and filter their JS query</div>
+		<ul class="mainNav">
+		  <li>
+			<a href="ifiuse.github.io">Home</a>
+		  </li>
+		  <li>
+			<a href="Javascript:void(0)">About</a>
+		  </li>
+		  <li>
+			<a href="Javascript:void(0)">Contact</a>
+		  </li>
+		  <li>
+			<a href="Javascript:void(0)">Policy</a>
+		  </li>
+		</ul>
+		</br>
+		<span class="sharer sharer__twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ifiuse.com" data-via="kutec" data-related="teckstack" data-hashtags="ifiuse">Tweet</a></span>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+			<span class="sharer sharer__facebook">
+				<div id="fb-root"></div>
+				<script>(function(d, s, id) {
+				  var js, fjs = d.getElementsByTagName(s)[0];
+				  if (d.getElementById(id)) return;
+				  js = d.createElement(s); js.id = id;
+				  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4&appId=846745112106645";
+				  fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));</script>
+				<div class="fb-share-button" data-href="http://ifiuse.com" data-layout="button_count"></div>
+			</span>
+	</nav>
+	<!-- side menu end -->
+	<!-- header start -->
+	<header>
+		<div class="container">
+			<h1 class="logo"><div class="logo__top"><div class="logo__bottom"></div></div><span>If I Use <em>Simple JS compare</em></span></h1>
+				<ul class="filters">
+				<li>
+					<input type="checkbox" checked="checked" id="chk-jq" ng-click="jqToggle = !jqToggle">
+					<label for="chk-jq" class="btn-jq">Jquery</label>
+				</li>
+				<li>
+					<input type="checkbox" checked="checked" id="chk-js" ng-click="jsToggle = !jsToggle">
+					<label for="chk-js" class="btn-js">Javascript</label>
+				</li>
+				<li>
+					<input type="checkbox" checked="checked" id="chk-ng" ng-click="ngToggle = !ngToggle">
+					<label for="chk-ng" class="btn-ng">Angular</label>
+				</li>
+				<li>
+					<input type="checkbox" id="chk-yui" ng-click="yuiToggle = !yuiToggle">
+					<label for="chk-yui" class="btn-yui">Yui</label>
+				</li>
+				<li>
+					<input type="checkbox" id="chk-aui" ng-click="auiToggle = !auiToggle">
+					<label for="chk-aui" class="btn-aui">Aui</label>
+				</li>
+			</ul>
+			<input type="text" class="searchCode" ng-model="searchCode" placeholder="Search query..." />
+			<!--<a href="javascript:void(0)" class="navigation"></a>-->
+		</div>
+	</header>
+	<!-- header end -->
+	<!-- cards wrapper start -->
+	<div class="cards-wrapper">
+		<div class="main">
+			<div class="validation checkboxNtf">You can compare only 3 scripts all together</div>
+			<!-- card header start -->
+			<div class="card-group card-group-head">
+				<div class="card card-head" id="box-jq" ng-hide="jqToggle">  
+					<div class="card-block">
+					  <h2>Jquery<span>(vs 2.1.1)<span></h2>
+					</div>
+				</div>
+				<div class="card card-head" id="box-js" ng-hide="jsToggle">   
+					<div class="card-block">
+					  <h2>Javascript<span>(vs 1.8.5)<span></h2>
+					</div>
+				</div>
+				<div class="card card-head" id="box-ng" ng-hide="ngToggle">
+					<div class="card-block">
+					  <h2>Angular<span>(vs 1.4.4)<span></h2>
+					</div>
+				</div>
+				<div class="card card-head" id="box-yui" ng-show="yuiToggle">
+					<div class="card-block">
+					  <h2>YUI<span>(vs 3.8.0)<span></h2>
+					</div>
+				</div>
+				<div class="card card-head" id="box-aui" ng-show="auiToggle">
+					<div class="card-block">
+					  <h2>AUI<span>(vs 3.0.0)<span></h2>
+					</div>
+				</div>
+			</div>
+			<!-- card header end -->
+			<!-- selectors container start -->
+			<div class="container cards-container selectors" ng-controller="SelectorCtrl">
+				<h2 class="heading-group">
+					<strong>Selectors</strong><span></span>
+				</h2>
+				<div class="card-group" ng-animate="'animate'" ng-repeat="selector in selectors | filter:searchCode">
+				  <div class="card card__jq" ng-hide="jqToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ selector.jq }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__js" ng-hide="jsToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ selector.js }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__ng" ng-hide="ngToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ selector.ng }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__yui" ng-show="yuiToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ selector.yui }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__aui" ng-show="auiToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ selector.aui }}</code></pre>
+					</div>
+				  </div>
+				</div>
+				<div class="validation">No Such Selectors are available.</div>
+			</div>
+			<!-- selectors container end -->
+			<!-- events container start -->
+			<div class="container cards-container events"  ng-controller="EventsCtrl">
+				<h2 class="heading-group">
+					<strong>Events</strong><span></span>
+				</h2>
+				<div class="card-group" ng-animate="'animate'" ng-repeat="event in events | filter:searchCode" on-last-repeat>
+				  <div class="card card__jq" ng-hide="jqToggle">    
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ event.jq }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__js" ng-hide="jsToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ event.js }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__ng" ng-hide="ngToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ event.ng }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__yui" ng-show="yuiToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ event.yui }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__aui" ng-show="auiToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ event.aui }}</code></pre>
+					</div>
+				  </div>
+				</div>
+				<div class="validation">No Such Events are available.</div>
+			</div>
+			<!-- events container end -->
+		</div>
+	</div>
+	<!-- cards wrapper end -->
+	<!-- footer start -->
+	<footer>
+		<div class="container">
+			 
+			<span>&copy; <a href="http://ifiuse.com">ifiuse</a> | </span> 
+			<span><a href="https://github.com/ifiuse/ifiuse.github.io/blob/master/LICENSE" target="_blank">Licence</a></span>
+			<span><a href="https://twitter.com/kutec" class="twitter-follow-button" data-show-count="true">@kutec</a></span>
+			<span><a href="https://twitter.com/manishweb2009" class="twitter-follow-button" data-show-count="true">@manishweb</a></span>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		</div>
+	</footer>
+	<!-- footer end -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/prism.js"></script>
+	<script>
+	var app = angular.module("ifIUseApp",[]);
+	
+	app.controller('ifIUseCtrl', function($scope){
+		// set the default search snippet 
+		$scope.searchCode = '';
+	});
+	
+	// selectors
+	app.controller('SelectorCtrl', function($scope, $http) {
+		$http.get('data/selectors.json')
+		.then(function(res){
+			$scope.selectors = res.data;
+		});
+	});
+	
+	// events
+	app.controller('EventsCtrl', function($scope, $http) {
+		$http.get('data/events.json')
+		.then(function(res){
+			$scope.events = res.data;
+		});
+	});
+	$(document).ready(function(){
+		setTimeout(function(){
+			Prism.highlightAll();
+			checkCodeLength();
+		}, 2000);
+		$('.searchCode').on('keyup', function(){
+			Prism.highlightAll();
+			setTimeout(function(){
+				checkCodeLength();
+			}, 600);
+		});
+		function checkCodeLength(){
+			$('.events h2 span').text($('.events').find('.card-group').length);
+			$('.selectors h2 span').text($('.selectors').find('.card-group').length);
+		}
+		$('.filters').click(function(){
+			var chkChecked = $(this).find('input:checkbox:checked').length;
+			if (chkChecked > 2){
+				$(this).find('input:checkbox:not(:checked)').prop('disabled', true);
+                		$(this).find('input:checkbox:checked').prop('disabled', false);
+                		$('.checkboxNtf').text('You can compare only 3 scripts all together.')
+                		$('.checkboxNtf').fadeIn().promise().done(function() {
+					$('.checkboxNtf').delay(1000).fadeOut("slow");
+				});
+			}else if(chkChecked <= 2){
+				$(this).find('input:checkbox:checked').prop('disabled', true);
+				$(this).find('input:checkbox:not(:checked)').prop('disabled', false);
+				$('.checkboxNtf').text('You have check minimum 2 scripts all together.')
+				$('.checkboxNtf').fadeIn().promise().done(function() {
+					$('.checkboxNtf').delay(1000).fadeOut("slow");
+				});
+			}else{
+				$(this).find('input:checkbox:not(:checked)').prop('disabled', false);
+			}
+			setSearchPlaceholder();
+		});
+		setSearchPlaceholder();
+		function setSearchPlaceholder(){
+			var activeFiltersPlaceholder = $('.filters').find('input:checkbox:checked').next().text();
+			$('.searchCode').attr('placeholder','Search '+activeFiltersPlaceholder.replace(/([a-z])([A-Z])/g, "$1 $2")+' query...');
+		}
+		
+		$('.close-nav').click(function(){
+		     $(this).parent('nav').removeClass('active')
+		});
+		$('.navigation').click(function(){
+		     $('.side-navigation').addClass('active')
+		});
+	});
+	</script>
+	<script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-67493343-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+</body>
+</html>

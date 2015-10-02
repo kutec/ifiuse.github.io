@@ -1,0 +1,205 @@
+[
+    {
+        "jq": "$('*')",
+        "js": "document.getElementsByTagName('*')",
+        "ng": "angular.element($('*'))",
+        "yui": "Y.all('*')",
+        "aui": "A.all('*')"
+    },
+    {
+        "jq": "$('#id')",
+        "js": "document.getElementById('id')",
+        "ng": "angular.element($('#id'))",
+        "yui": "Y.one('#id')",
+        "aui": "A.one('#id')"
+    },
+    {
+        "jq": "$('.class')",
+        "js": "document.getElementsByClassName('class')[0]",
+        "ng": "angular.element($('.class'))",
+        "yui": "Y.one('.class')",
+        "aui": "A.one('.class')"
+    },
+    {
+        "jq": "$(':button')",
+        "js": "document.querySelectorAll('button')",
+        "ng": "angular.element($(':button'))",
+        "yui": "Y.one(':button')",
+        "aui": "A.one(':button')"
+    },
+    {
+        "jq": "$(':checkbox')",
+        "js": "document.querySelectorAll('input[type=\"checkbox\"]')",
+        "ng": "angular.element($(':checkbox'))",
+        "yui": "Y.all('input[type=checkbox]')",
+        "aui": "A.all(':checkbox')"
+    },
+    {
+        "jq": "$(':checked')",
+        "js": "document.getElementById('checkbox').checked",
+        "ng": "angular.element($(':checked'))",
+        "yui": "Y.all(':checked')",
+        "aui": "A.all(':checked')"
+    },
+    {
+        "jq": "$('input:checkbox:checked')",
+        "js": "var myElement = document.querySelectorAll('input[type=\"checkbox\"]');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.checked == true){\n        //code\n    }\n}",
+        "ng": "angular.element($('input:checkbox:checked'))",
+        "yui": "Y.all(':checked')",
+        "aui": "A.all(':checked')"
+    },
+    {
+        "jq": "$('parent > child')",
+        "js": "document.querySelectorAll('parentNode > childNode')",
+        "ng": "...",
+        "yui": "Y.all('parent > child')",
+        "aui": "A.all('parent > child')"
+    },
+    {
+        "jq": "$('parent child')",
+        "js": "document.querySelectorAll('parentNode childNode')",
+        "ng": "...",
+        "yui": "Y.all('parent child')",
+        "aui": "A.all('parent child')"
+    },
+    {
+    	"jq": "$(':contains(\"foo\")')",
+    	"js": "var myElement = document.getElementById('element').textContent;\nvar myElements = document.getElementsByTagName('input')[0];\nvar myElement = document.getElementById('cartContent').innerHTML;\nvar nn = myElement.search('new'); \nmyElements.style.color = '#f00';",
+    	"ng": "angular.element($(':contains(\"foo\")'))",
+    	"yui": "Y.all(':contains(foo)')",
+    	"aui": "A.all(':contains(foo)')"
+    },
+    {
+    	"jq": "$(':disabled')",
+    	"js": "var myElement = document.getElementsByTagName('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.disabled == true){\n        //code\n    }\n}",
+    	"ng": "angular.element($(':disabled'))",
+    	"yui": "Y.all(':disabled')",
+    	"aui": "A.all(':disabled')"
+    },
+    {
+    	"jq": "$(':enabled')",
+    	"js": "var myElement = document.getElementsByTagName('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.disabled != true){\n        //code\n    }\n}",
+    	"ng": "angular.element($(':enabled'))",
+    	"yui": "Y.all(':enabled')",
+    	"aui": "A.all(':enabled')"
+    },
+    {
+    	"jq": "$(':empty')",
+    	"js": "myElement = document.getElementById('element').innerHTML === '';\nif (myElement) {\n    //code\n}",
+    	"ng": "angular.element($(':empty'))",
+    	"yui": "Y.all(':empty')",
+    	"aui": "A.all(':empty')"
+    },
+    {
+	"jq": "$(':parent')",
+	"js": "myElement = document.getElementById('element').innerHTML === '';\nif (!myElement) {\n    //code\n}",
+	"ng": "angular.element($(':parent'))",
+	"yui": "Y.all(':not(:empty)')",
+	"aui": "A.all(':parent')"
+    },
+    {
+        "jq": "$('parent child:even')",
+        "js": "...",
+        "ng": "angular.element($('parent child:even'))",
+        "yui": "Y.all('div').even()",
+        "aui": "A.all('div').even()"
+    },
+    {
+        "jq": "$('parent child:odd')",
+        "js": "...",
+        "ng": "angular.element($('parent child:odd'))",
+        "yui": "Y.all('div').odd()",
+        "aui": "A.all('div').odd()"
+    },
+    {
+    	"jq": "$(':file')",
+    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == 'file'){\n        //code\n     }\n}",
+    	"ng": "angular.element($(':file'))",
+    	"yui": "Y.all('input[type=file]')",
+    	"aui": "A.all(':file')"
+    },
+    {
+        "jq": "$(':first-child')",
+        "js": "document.getElementById('elementList').firstChild",
+        "ng": "angular.element($(':first-child'))",
+        "yui": "Y.all(':first-child')",
+        "aui": "A.all(':first-child')"
+    },
+    {
+        "jq": "$(':last-child')",
+        "js": "document.getElementById('elementList').lastChild",
+        "ng": "angular.element($(':last-child'))",
+        "yui": "Y.all(':last-child')",
+        "aui": "A.all(':last-child')"
+    },
+    {
+    	"jq": "$(':first')",
+    	"js": "document.getElementsByClassName('elementList')[0]",
+    	"ng": "angular.element($(':first'))",
+    	"yui": "Y.one('selectorname')",
+    	"aui": "A.one('selectorname')"
+    },
+    {
+        "jq": "$('div').slice(n + 1);",
+        "js": "...",
+        "ng": "...",
+        "yui": "Y.all('div').slice(n + 1)",
+        "aui": "A.all('div').slice(n + 1)"
+    },
+    {
+        "jq": "$('div').slice(0,n)",
+        "js": "...",
+        "ng": "...",
+        "yui": "Y.all('div').slice(0,n)",
+        "aui": "A.all('div').slice(0,n)"
+    },
+    {
+    	"jq": "$(':not(div)')",
+    	"js": "var myElement = document.getElementById('element');\n    if(myElement.tagName.toLowerCase() != 'div'){\n        //code\n     }",
+    	"ng": "angular.element($(':not(div)'))",
+	"yui": "Y.all(':not(div)')",
+	"aui": "A.all(':not(div)')"
+    },
+    {
+    	"jq": "$(':password')",
+    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"password\"){\n        //code\n     }\n}",
+    	"ng": "angular.element($(':password'))",
+    	"yui": "Y.all('input[type=password]')",
+    	"aui": "A.all(':password')"
+    },
+    {
+    	"jq": "$(':radio')",
+    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"radio\"){\n        //code\n     }\n}",
+    	"ng": "angular.element($(':radio'))",
+    	"yui": "Y.all('input[type=radio]')",
+    	"aui": "A.all(':radio')"
+    },
+    {
+    	"jq": "$(':reset')",
+    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"reset\"){\n        //code\n     }\n}",
+    	"ng": "angular.element($(':reset'))",
+    	"yui": "Y.all('input[type=reset]')",
+    	"aui": "A.all(':reset')"
+    },
+    {
+        "jq": "$(':selected')",
+        "js": "...",
+        "ng": "angular.element($(':selected'))",
+        "yui": "Y.all('option[selected]')",
+        "aui": "A.all(':selected')"
+    },
+    {
+    	"jq": "$(':submit')",
+    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"submit\"){\n        //code\n     }\n}",
+    	"ng": "angular.element($(':submit'))",
+    	"yui": "Y.all('input[type=submit]')",
+    	"aui": "A.all(':submit')"
+    },
+    {
+    	"jq": "$(':text')",
+    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"text\"){\n        //code\n     }\n}",
+    	"ng": "angular.element($(':text'))",
+    	"yui": "Y.all('input[type=text]')",
+    	"aui": "A.all(':text')"
+    }
+]

@@ -1,0 +1,122 @@
+[
+	{ "jq": "$('selector').click(function)",
+	  "js": "onclick='myFunction()'",
+	  "ng": "ng-click='expression'",
+	  "yui": "Y.one('selector').on('click', function)",
+	  "aui": "A.one('selector').on('click', function)"
+	},
+	{ "jq": "$('selector').dblclick(function)",
+	  "js": "ondblclick='myFunction()'",
+	  "ng": "ng-dblclick='expression'",
+	  "yui": "Y.one('selector').delegate('dblclick', function)",
+	  "aui": "A.one('selector').delegate('dblclick', function)"
+	},
+	{ "jq": "$('selector').focus(function)",
+	  "js": "onfocus='myFunction()'",
+	  "ng": "ng-focus='expression'",
+	  "yui": "Y.one('selector').on('focus', function)",
+	  "aui": "A.one('selector').on('focus', function)"
+	},
+	{ "jq": "$('selector').focusin(function)",
+	  "js": "onfocusin='myFunction()'",
+	  "ng": "...",
+	  "yui": "...",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').focusout(function)",
+	  "js": "onfocusout='myFunction()'",
+	  "ng": "...",
+	  "yui": "...",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').blur(function)",
+	  "js": "onblur='myFunction()'",
+	  "ng": "ng-blur='expression'",
+	  "yui": "Y.one('selector').on('blur', function)",
+	  "aui": "A.one('selector').on('blur', function)"
+	},
+	{ "jq": "$('selector').mouseenter(function)",
+	  "js": "onmouseenter='myFunction()'",
+	  "ng": "ng-mouseenter='expression'",
+	  "yui": "...",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').mousedown(function)",
+	  "js": "onmousedown='myFunction()'",
+	  "ng": "ng-mousedown='expression'",
+	  "yui": "Y.one('selector').simulate('mousedown', function)",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').mouseleave(function)",
+	  "js": "onmouseleave='myFunction()'",
+	  "ng": "ng-mouseleave='expression'",
+	  "yui": "...",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').mousemove(function)",
+	  "js": "onmousemove='myFunction()'",
+	  "ng": "ng-mousemove='expression'",
+	  "yui": "Y.one('selector').simulate('mousemove', function)",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').mouseout(function)",
+	  "js": "onmouseout='myFunction()'",
+	  "ng": "...",
+	  "yui": "Y.one('selector').simulate('mouseout', function)",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').mouseover(function)",
+	  "js": "onmouseover='myFunction()'",
+	  "ng": "ng-mouseover='expression'",
+	  "yui": "Y.one('selector').simulate('mouseover', function)",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').mouseup(function)",
+	  "js": "onmouseup='myFunction()'",
+	  "ng": "ng-mouseup='expression'",
+	  "yui": "Y.one('selector').simulate('mouseup', function)",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').change(function)",
+	  "js": "onchange='myFunction()'",
+	  "ng": "ng-change='expression'",
+	  "yui": "Y.one('selector').on('valuechange', function)",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').select(function)",
+	  "js": "onselect='myFunction()'",
+	  "ng": "...",
+	  "yui": "Y.one('selector').simulate('select', function)",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').keydown(function)",
+	  "js": "onkeydown='myFunction()'",
+	  "ng": "ng-keydown='expression'",
+	  "yui": "Y.one('selector').simulate('keydown', function)",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').keypress(function)",
+	  "js": "onkeypress='myFunction()'",
+	  "ng": "ng-keypress='expression'",
+	  "yui": "Y.one('selector').simulate('keypress', function)",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').keyup(function)",
+	  "js": "onkeyup='myFunction()'",
+	  "ng": "ng-keyup='expression'",
+	  "yui": "Y.one('selector').simulate('keyup', function)",
+	  "aui": "..."
+	},
+	{ "jq": "$('selector').scroll(function)",
+	  "js": "onscroll='myFunction()'",
+	  "ng": "angular.element($window).bind('scroll', function)",
+	  "yui": "Y.one('selector').on('scroll', function)",
+	  "aui": "A.one('selector').on('scroll', function)"
+	},
+	{ "jq": "$('selector').resize(function)",
+	  "js": "onresize='myFunction()'",
+	  "ng": "angular.element($window).bind('resize', function)",
+	  "yui": "Y.one('selector').on('resize', function)",
+	  "aui": "A.one('selector').on('resize', function)"
+	}
+]
