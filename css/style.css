@@ -126,12 +126,14 @@ ul{
 }
 .filters li {
     display: inline-block;
-    padding: 2px;
 	position:relative;
 }
-.filters li label {
+.filter-dropdown{
+	display: inline-block;
+	position: relative;
+}
+.filters li label, .filter-dropdown label {
     color: #fff;
-    background: #aaa;
     text-decoration: none;
     padding: 5px 10px;
     cursor:pointer;
@@ -143,10 +145,30 @@ ul{
     -moz-transition: background ease-out 0.3s;
     -o-transition: background ease-out 0.3s;
     transition: background ease-out 0.3s;
+    display:block;
 }
-.filters li input[type=checkbox]{
+.filters li input[type=checkbox], .filter-dropdown input[type=checkbox]{
 	position:absolute;
 	visibility:hidden
+}
+.filters li input[type=checkbox]:not(:checked) + label, .filter-dropdown input[type=checkbox]:not(:checked) + label{
+	background: #aaa;
+}
+.filter-dropdown > label{
+    padding-right: 26px;
+    background-color: #FF8C00;
+}
+.filter-dropdown label:hover + .filter-dropdown-list, .filter-dropdown-list:hover{
+	display:block;
+}
+.filter-dropdown > label:before {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    border-top: solid 6px #CC7206;
+    border-left: solid 6px transparent;
+    border-right: solid 6px transparent;
 }
 .searchCode {
     padding: 5px;
@@ -190,6 +212,30 @@ input[type=checkbox]:checked + label.btn-aui{
 }
 .filters li label:hover{
     background-color: #ccc;
+}
+.filters li.filter-dropdown label:hover{
+    background-color: #E0953B;
+}
+ul.filter-dropdown-list {
+    position: absolute;
+    text-align: left;
+    background-color: #FF8C00;
+    top: 27px;
+    display:none;
+}
+.filter-dropdown-list li {
+    border: solid 1px #DF7B03;
+    display: block;
+    margin-top: -1px;
+}
+.filter-dropdown-list a {
+    padding: 5px 8px;
+    display: block;
+    color:#fff;
+    text-decoration:none
+}
+.filter-dropdown-list a:hover {
+    background-color: #E0953B;
 }
 .box {
     -webkit-box-flex: 1;

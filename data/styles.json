@@ -1,0 +1,44 @@
+[
+	{ "jq": "$('selector').addClass('className')",
+	  "js": "var selector = document.getElementById('id');\n    selector.classList.add('className')",
+	  "ng": "angular.element('selector').addClass('className')",
+	  "yui": "Y.one('selector').addClass('className')",
+	  "aui": "A.one('selector').addClass('className')"
+	},
+	{ "jq": "$('selector').removeClass('className')",
+	  "js": "var selector = document.getElementById('id');\n    selector.classList.remove('className')",
+	  "ng": "angular.element('selector').removeClass('className')",
+	  "yui": "Y.one('selector').removeClass('className')",
+	  "aui": "A.one('selector').removeClass('className')"
+	},
+	{ "jq": "$('selector').hasClass('className')",
+	  "js": "var selector = document.getElementById('id');\n    selector.classList.contains('className')",
+	  "ng": "angular.element('selector').hasClass('className')",
+	  "yui": "Y.one('selector').hasClass('className')",
+	  "aui": "A.one('selector').hasClass('className')"
+	},
+	{ "jq": "$('selector').toggleClass('className')",
+	  "js": "var selector = document.getElementById('id');\n    selector.classList.toggle('className')",
+	  "ng": "angular.element('selector').toggleClass('className')",
+	  "yui": "Y.one('selector').toggleClass('className')",
+	  "aui": "A.one('selector').toggleClass('className')"
+	},
+	{ "jq": "$('selector').css('color', 'red')",
+	  "js": "var selector = document.getElementById('id');\n    selector.style.color = 'red'",
+	  "ng": "angular.element('selector').css('color', 'red')\n--In other way--\nng-style=\"{color:'red'}\"",
+	  "yui": "Y.one('selector').setStyle('color', 'red')",
+	  "aui": "A.one('selector').setStyle('color', 'red')"
+	},
+	{ "jq": "$('selector').css({color:'red',backgroundColor:'yellow'})",
+	  "js": "var selector = document.getElementById('id');\n    selector.style.color = 'red'\n    selector.style.backgroundColor = 'yellow'",
+	  "ng": "angular.element('selector').css({color:'red',display:'block'})\n--In other way--\nng-style=\"{color:'red', backgroundColor:'yellow'}\"",
+	  "yui": "Y.one('selector').setStyles({color:'red',backgroundColor:'yellow'})",
+	  "aui": "A.one('selector').setStyles({color:'red',backgroundColor:'yellow'})"
+	},
+	{ "jq": "$('selector').css('color')",
+	  "js": "function getCssProperty(selector, property){\n    var elem = document.getElementById(selector);\n    return window.getComputedStyle(elem,null).getPropertyValue(property);\n}\n    var css = getCssProperty('#selector', 'color')",
+	  "ng": "angular.element('selector').css({color:'red',display:'block'})\n--In other way--\nng-style=\"{color:'red', backgroundColor:'yellow'}\"",
+	  "yui": "Y.one('selector').getStyle('color')",
+	  "aui": "A.one('selector').getStyle('color')"
+	}
+]

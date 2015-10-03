@@ -50,25 +50,42 @@
 	<header>
 		<div class="container">
 			<h1 class="logo"><div class="logo__top"><div class="logo__bottom"></div></div><span>If I Use <em>Simple JS compare</em></span></h1>
+				<div class="filter-dropdown">
+					<label>Filter</label>
+					<ul class="filter-dropdown-list">
+						<li>
+							<input type="checkbox" checked="checked" id="chk-selectors" ng-click="SelectorsToggle = !SelectorsToggle"/>
+							<label for="chk-selectors">Selectors</label>
+						</li>
+						<li>
+							<input type="checkbox" checked="checked" id="chk-events"  ng-click="EventsToggle = !EventsToggle"/>
+							<label for="chk-events">Events</label>
+						</li>
+						<li>
+							<input type="checkbox" checked="checked" id="chk-styles"  ng-click="StylesToggle = !StylesToggle"/>
+							<label for="chk-styles">CSS</label>
+						</li>
+					</ul>
+				</div>
 				<ul class="filters">
 				<li>
-					<input type="checkbox" checked="checked" id="chk-jq" ng-click="jqToggle = !jqToggle">
+					<input type="checkbox" checked="checked" id="chk-jq" ng-click="jqToggle = !jqToggle"/>
 					<label for="chk-jq" class="btn-jq">Jquery</label>
 				</li>
 				<li>
-					<input type="checkbox" checked="checked" id="chk-js" ng-click="jsToggle = !jsToggle">
+					<input type="checkbox" checked="checked" id="chk-js" ng-click="jsToggle = !jsToggle"/>
 					<label for="chk-js" class="btn-js">Javascript</label>
 				</li>
 				<li>
-					<input type="checkbox" checked="checked" id="chk-ng" ng-click="ngToggle = !ngToggle">
+					<input type="checkbox" checked="checked" id="chk-ng" ng-click="ngToggle = !ngToggle"/>
 					<label for="chk-ng" class="btn-ng">Angular</label>
 				</li>
 				<li>
-					<input type="checkbox" id="chk-yui" ng-click="yuiToggle = !yuiToggle">
+					<input type="checkbox" id="chk-yui" ng-click="yuiToggle = !yuiToggle"/>
 					<label for="chk-yui" class="btn-yui">Yui</label>
 				</li>
 				<li>
-					<input type="checkbox" id="chk-aui" ng-click="auiToggle = !auiToggle">
+					<input type="checkbox" id="chk-aui" ng-click="auiToggle = !auiToggle"/>
 					<label for="chk-aui" class="btn-aui">Aui</label>
 				</li>
 			</ul>
@@ -111,7 +128,7 @@
 			</div>
 			<!-- card header end -->
 			<!-- selectors container start -->
-			<div class="container cards-container selectors" ng-controller="SelectorCtrl">
+			<div class="container cards-container selectors" ng-controller="SelectorCtrl" ng-hide="SelectorsToggle">
 				<h2 class="heading-group">
 					<strong>Selectors</strong><span></span>
 				</h2>
@@ -146,7 +163,7 @@
 			</div>
 			<!-- selectors container end -->
 			<!-- events container start -->
-			<div class="container cards-container events"  ng-controller="EventsCtrl">
+			<div class="container cards-container events"  ng-controller="EventsCtrl" ng-hide="EventsToggle">
 				<h2 class="heading-group">
 					<strong>Events</strong><span></span>
 				</h2>
@@ -180,6 +197,41 @@
 				<div class="validation">No Such Events are available.</div>
 			</div>
 			<!-- events container end -->
+			<!-- styles container start -->
+			<div class="container cards-container styles"  ng-controller="StylesCtrl" ng-hide="StylesToggle">
+				<h2 class="heading-group">
+					<strong>CSS</strong><span></span>
+				</h2>
+				<div class="card-group" ng-animate="'animate'" ng-repeat="style in styles | filter:searchCode" on-last-repeat>
+				  <div class="card card__jq" ng-hide="jqToggle">    
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ style.jq }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__js" ng-hide="jsToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ style.js }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__ng" ng-hide="ngToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ style.ng }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__yui" ng-show="yuiToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ style.yui }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__aui" ng-show="auiToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ style.aui }}</code></pre>
+					</div>
+				  </div>
+				</div>
+				<div class="validation">No Such Styles are available.</div>
+			</div>
+			<!-- styles container end -->
 		</div>
 	</div>
 	<!-- cards wrapper end -->
@@ -220,6 +272,14 @@
 			$scope.events = res.data;
 		});
 	});
+	
+	// styles
+	app.controller('StylesCtrl', function($scope, $http) {
+		$http.get('data/styles.json')
+		.then(function(res){
+			$scope.styles = res.data;
+		});
+	});
 	$(document).ready(function(){
 		setTimeout(function(){
 			Prism.highlightAll();
@@ -232,35 +292,45 @@
 			}, 600);
 		});
 		function checkCodeLength(){
-			$('.events h2 span').text($('.events').find('.card-group').length);
 			$('.selectors h2 span').text($('.selectors').find('.card-group').length);
+			$('.events h2 span').text($('.events').find('.card-group').length);
+			$('.styles h2 span').text($('.styles').find('.card-group').length);
 		}
-		$('.filters').click(function(){
-			var chkChecked = $(this).find('input:checkbox:checked').length;
+		$('.filters > li:not(.filter-dropdown)').click(function(){
+			var chkChecked = $(this).parent().find('input:checkbox:checked').length;
 			if (chkChecked > 2){
-				$(this).find('input:checkbox:not(:checked)').prop('disabled', true);
-                		$(this).find('input:checkbox:checked').prop('disabled', false);
-                		$('.checkboxNtf').text('You can compare only 3 scripts all together.')
-                		$('.checkboxNtf').fadeIn().promise().done(function() {
+				$(this).parent().find('input:checkbox:not(:checked)').prop('disabled', true);
+                $(this).parent().find('input:checkbox:checked').prop('disabled', false);
+                $('.checkboxNtf').text('You can compare only 3 scrtips all togather.')
+                $('.checkboxNtf').fadeIn().promise().done(function() {
 					$('.checkboxNtf').delay(1000).fadeOut("slow");
 				});
 			}else if(chkChecked <= 2){
-				$(this).find('input:checkbox:checked').prop('disabled', true);
-				$(this).find('input:checkbox:not(:checked)').prop('disabled', false);
-				$('.checkboxNtf').text('You have check minimum 2 scripts all together.')
+				$(this).parent().find('input:checkbox:checked').prop('disabled', true);
+				$(this).parent().find('input:checkbox:not(:checked)').prop('disabled', false);
+				$('.checkboxNtf').text('You have check minimum 2 scrtips all togather.')
 				$('.checkboxNtf').fadeIn().promise().done(function() {
 					$('.checkboxNtf').delay(1000).fadeOut("slow");
 				});
 			}else{
-				$(this).find('input:checkbox:not(:checked)').prop('disabled', false);
+				$(this).parent().find('input:checkbox:not(:checked)').prop('disabled', false);
 			}
 			setSearchPlaceholder();
 		});
 		setSearchPlaceholder();
 		function setSearchPlaceholder(){
-			var activeFiltersPlaceholder = $('.filters').find('input:checkbox:checked').next().text();
+			var activeFiltersPlaceholder = $('.filters').find(' > li > input:checkbox:checked').next().text();
 			$('.searchCode').attr('placeholder','Search '+activeFiltersPlaceholder.replace(/([a-z])([A-Z])/g, "$1 $2")+' query...');
 		}
+		
+		$('.filter-dropdown input').on('change', function(){
+			var chkChecked = $(this).parents('.filter-dropdown').find('input:checkbox:checked').length;
+			if(chkChecked == 1){
+				$(this).parents('.filter-dropdown').find('input:checkbox:checked').prop('disabled', true)
+			}else{
+				$(this).parents('.filter-dropdown').find('input:checkbox:checked').prop('disabled', false)
+			}
+		});
 		
 		$('.close-nav').click(function(){
 		     $(this).parent('nav').removeClass('active')
