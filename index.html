@@ -134,9 +134,9 @@
 			<!-- Initialization container start -->
 			<div class="container cards-container inits" ng-controller="initCtrl" ng-hide="InitsToggle">
 				<h2 class="heading-group">
-					<strong>Initialization</strong><span></span>
+					<strong>Initialization</strong><span>{{availableInits.length}}</span>
 				</h2>
-				<div class="card-group" ng-animate="'animate'" ng-repeat="init in inits | filter:searchCode">
+				<div class="card-group" ng-animate="'animate'" ng-repeat="init in availableInits = (inits | filter:searchCode)">
 				  <div class="card card__jq" ng-hide="jqToggle">
 					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.jq }}</code></pre>
@@ -169,9 +169,9 @@
 			<!-- selectors container start -->
 			<div class="container cards-container selectors" ng-controller="SelectorCtrl" ng-hide="SelectorsToggle">
 				<h2 class="heading-group">
-					<strong>Selectors</strong><span></span>
+					<strong>Selectors</strong><span>{{availableSelectors.length}}</span>
 				</h2>
-				<div class="card-group" ng-animate="'animate'" ng-repeat="selector in selectors | filter:searchCode">
+				<div class="card-group" ng-animate="'animate'" ng-repeat="selector in availableSelectors = (selectors | filter:searchCode)">
 				  <div class="card card__jq" ng-hide="jqToggle">
 					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ selector.jq }}</code></pre>
@@ -204,9 +204,9 @@
 			<!-- events container start -->
 			<div class="container cards-container events"  ng-controller="EventsCtrl" ng-hide="EventsToggle">
 				<h2 class="heading-group">
-					<strong>Events</strong><span></span>
+					<strong>Events</strong><span>{{availableEvents.length}}</span>
 				</h2>
-				<div class="card-group" ng-animate="'animate'" ng-repeat="event in events | filter:searchCode" on-last-repeat>
+				<div class="card-group" ng-animate="'animate'" ng-repeat="event in availableEvents = (events | filter:searchCode)">
 				  <div class="card card__jq" ng-hide="jqToggle">    
 					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ event.jq }}</code></pre>
@@ -239,9 +239,9 @@
 			<!-- styles container start -->
 			<div class="container cards-container styles"  ng-controller="StylesCtrl" ng-hide="StylesToggle">
 				<h2 class="heading-group">
-					<strong>CSS</strong><span></span>
+					<strong>CSS</strong><span>{{availableStyles.length}}</span>
 				</h2>
-				<div class="card-group" ng-animate="'animate'" ng-repeat="style in styles | filter:searchCode" on-last-repeat>
+				<div class="card-group" ng-animate="'animate'" ng-repeat="style in availableStyles = (styles | filter:searchCode)">
 				  <div class="card card__jq" ng-hide="jqToggle">    
 					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ style.jq }}</code></pre>
@@ -292,12 +292,12 @@
 	<script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
+        </script>
+        <script type="text/javascript">
             try {
               var pageTracker = _gat._getTracker("UA-67493343-1");
             pageTracker._trackPageview();
             } catch(err) {}
-          </script>
+        </script>
 </body>
 </html>
