@@ -127,6 +127,41 @@
 				</div>
 			</div>
 			<!-- card header end -->
+			<!-- Initialization container start -->
+			<div class="container cards-container inits" ng-controller="initCtrl" ng-hide="InitsToggle">
+				<h2 class="heading-group">
+					<strong>Initialization</strong><span></span>
+				</h2>
+				<div class="card-group" ng-animate="'animate'" ng-repeat="init in inits | filter:searchCode">
+				  <div class="card card__jq" ng-hide="jqToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.jq }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__js" ng-hide="jsToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.js }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__ng" ng-hide="ngToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.ng }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__yui" ng-hide="yuiToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.yui }}</code></pre>
+					</div>
+				  </div>
+				  <div class="card card__aui" ng-hide="auiToggle">
+					<div class="card-block">
+					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.aui }}</code></pre>
+					</div>
+				  </div>
+				</div>
+				<div class="validation">No Such Initialization are available.</div>
+			</div>
+			<!-- Initialization container end -->
 			<!-- selectors container start -->
 			<div class="container cards-container selectors" ng-controller="SelectorCtrl" ng-hide="SelectorsToggle">
 				<h2 class="heading-group">
@@ -255,6 +290,14 @@
 	app.controller('ifIUseCtrl', function($scope){
 		// set the default search snippet 
 		$scope.searchCode = '';
+	});
+	
+	// Initialization
+	app.controller('initCtrl', function($scope, $http) {
+		$http.get('data/inits.json')
+		.then(function(res){
+			$scope.inits = res.data;
+		});
 	});
 	
 	// selectors
