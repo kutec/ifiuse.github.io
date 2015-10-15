@@ -1,0 +1,9 @@
+[
+    {
+        "jq": "$(document).ready(function(){\n    //code\n});\n\n--In other way--\n\n$(function(){\n    //code\n});\n\n--In other way--\n\n$(window).load(function(){\n    //code\n});",
+        "js": "function domReady(fName) {\n    if (document.readyState != 'loading'){\n        fName();    \n    }else if (document.addEventListener) {\n        document.addEventListener('DOMContentLoaded', fName);\n    }else {\n        document.attachEvent('onreadystatechange', function() {\n            if (document.readyState != 'loading'){\n                fName();\n            }\n        });\n    }\n}",
+        "ng": "ng-app='yourModuleName'\n\n--In other way--\n\nvar app = angular.module('app', []);\napp.controller('DomReadyCtrl', function(){\n    //code\n});\nangular.bootstrap(document.body, ['app'])",
+        "yui": "YUI().use('node', 'module2', 'module3', function (Y) {\n    //code\n});",
+        "aui": "AUI().use('node', 'module2', 'module3', function (A) {\n    //code\n});"
+    }
+]
