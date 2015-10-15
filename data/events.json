@@ -11,6 +11,24 @@
 	  "yui": "Y.one('selector').delegate('dblclick', function)",
 	  "aui": "A.one('selector').delegate('dblclick', function)"
 	},
+	{ "jq": "$('selector').on(events, selector, handler);",
+	  "js": "function addEventListener(selector, events, handler) {\n    if(selector.addEventListener) {\n        selector.addEventListener(events, handler);\n    }else{\n        selector.attachEvent('on' + events, function(){\n            handler.call(selector);\n        });\n    }\n}\naddEventListener(selector, events, handler);",
+	  "ng": "...",
+	  "yui": "Y.one('selector').on('click', function)",
+	  "aui": "A.one('selector').on('click', function)"
+	},
+	{ "jq": "$('selector').off(events, selector, handler);",
+	  "js": "function removeEventListener(selector, events, handler) {\n    if(selector.removeEventListener) {\n        selector.removeEventListener(events, handler);\n    }else{\n        selector.detachEvent('on' + events, function(){\n            handler.call(selector);\n        });\n    }\n}\nremoveEventListener(selector, events, handler);",
+	  "ng": "...",
+	  "yui": "Y.one('selector').detach('click', function)",
+	  "aui": "A.one('selector').detach('click', function)detach"
+	},
+	{ "jq": "$('selector').hover(function)",
+	  "js": "onmouseenter='myFunction()'\n and\nonmouseleave='myFunction()'",
+	  "ng": "ng-mouseenter='expression'\n and\nng-mouseleave='expression'",
+	  "yui": "Y.one('selector').on('hover', overfn, outfn)",
+	  "aui": "A.one('selector').on('hover', overfn, outfn)"
+	},
 	{ "jq": "$('selector').focus(function)",
 	  "js": "onfocus='myFunction()'",
 	  "ng": "ng-focus='expression'",
@@ -118,5 +136,11 @@
 	  "ng": "angular.element($window).bind('resize', function)",
 	  "yui": "Y.one('selector').on('resize', function)",
 	  "aui": "A.one('selector').on('resize', function)"
+	},
+	{ "jq": "$('selector').on('contextmenu', function(e){\n    e.stopPropagation();\n    // Your code.\n});",
+	  "js": "oncontextmenu='myFunction()'",
+	  "ng": "...",
+	  "yui": "Y.one('selector').on('contextmenu', function)",
+	  "aui": "A.one('selector').on('contextmenu', function)"
 	}
 ]
