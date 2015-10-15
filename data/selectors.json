@@ -6,12 +6,12 @@
         "yui": "Y.all('*')",
         "aui": "A.all('*')"
     },
-    {
-        "jq": "$('#id')",
-        "js": "document.getElementById('id')",
-        "ng": "angular.element($('#id'))",
-        "yui": "Y.one('#id')",
-        "aui": "A.one('#id')"
+	{
+        "jq": "$('selector')",
+        "js": "document.getElementsByTagName('selector')",
+        "ng": "angular.element($('selector'))",
+        "yui": "Y.one('selector')\n\n--In Other Way--\n\nY.all('selector')",
+        "aui": "A.one('selector')"
     },
     {
         "jq": "$('.class')",
@@ -19,6 +19,69 @@
         "ng": "angular.element($('.class'))",
         "yui": "Y.one('.class')",
         "aui": "A.one('.class')"
+    },
+    {
+        "jq": "$('.class, .other')",
+        "js": "document.querySelectorAll('.class, .other')",
+        "ng": "angular.element($('.class, .other'))",
+        "yui": "Y.all('.class, .other')",
+        "aui": "A.all('.class, .other')"
+    },
+    {
+        "jq": "$('#id')",
+        "js": "document.getElementById('id')",
+        "ng": "angular.element($('#id'))",
+        "yui": "Y.one('#id')",
+        "aui": "A.one('#id')"
+    },
+	{
+    	"jq": "$(':first')",
+    	"js": "document.getElementsByClassName('selector').firstElementChild",
+    	"ng": "angular.element($(':first'))",
+    	"yui": "Y.one('selectorname')",
+    	"aui": "A.one('selectorname')"
+    },
+	{
+    	"jq": "$(':last')",
+    	"js": "document.getElementsByClassName('selector').lastElementChild",
+    	"ng": "angular.element($(':last'))",
+    	"yui": "var lastElement,\n    length  = list.size(),\n    list = Y.all('selectors');\nif (length) {\n    lastElement = list.item(length - 1);\n}",
+    	"aui": "var lastElement,\n    length  = list.size(),\n    list = A.all('selectors');\nif (length) {\n    lastElement = list.item(length - 1);\n}"
+    },
+	{
+        "jq": "$(':first-child')",
+        "js": "document.getElementById('selector').firstChild",
+        "ng": "angular.element($(':first-child'))",
+        "yui": "Y.all(':first-child')",
+        "aui": "A.all(':first-child')"
+    },
+    {
+        "jq": "$(':last-child')",
+        "js": "document.getElementById('selector').lastChild",
+        "ng": "angular.element($(':last-child'))",
+        "yui": "Y.all(':last-child')",
+        "aui": "A.all(':last-child')"
+    },
+    {
+        "jq": "$('selector:eq(n)')",
+        "js": "document.querySelectorAll('selector')[n]",
+        "ng": "...",
+        "yui": "Y.all('selector').item(n)",
+        "aui": "Y.all('selector').item(n)"
+    },
+    {
+    	"jq": "$(':contains(\"foo\")')",
+    	"js": "var myElement = document.getElementById('element').textContent;\nvar myElements = document.getElementsByTagName('input')[0];\nvar myElement = document.getElementById('cartContent').innerHTML;\nvar nn = myElement.search('new'); \nmyElements.style.color = '#f00';",
+    	"ng": "angular.element($(':contains(\"foo\")'))",
+    	"yui": "Y.all(':contains(foo)')",
+    	"aui": "A.all(':contains(foo)')"
+    },
+    {
+    	"jq": "$(':empty')",
+    	"js": "myElement = document.getElementById('element').innerHTML === '';\nif (myElement) {\n    //Your code\n}",
+    	"ng": "angular.element($(':empty'))",
+    	"yui": "Y.all(':empty')",
+    	"aui": "A.all(':empty')"
     },
     {
         "jq": "$(':button')",
@@ -43,7 +106,7 @@
     },
     {
         "jq": "$('input:checkbox:checked')",
-        "js": "var myElement = document.querySelectorAll('input[type=\"checkbox\"]');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.checked == true){\n        //code\n    }\n}",
+        "js": "var myElement = document.querySelectorAll('input[type=\"checkbox\"]');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.checked == true){\n        //Your code\n    }\n}",
         "ng": "angular.element($('input:checkbox:checked'))",
         "yui": "Y.all(':checked')",
         "aui": "A.all(':checked')"
@@ -63,36 +126,22 @@
         "aui": "A.all('parent child')"
     },
     {
-    	"jq": "$(':contains(\"foo\")')",
-    	"js": "var myElement = document.getElementById('element').textContent;\nvar myElements = document.getElementsByTagName('input')[0];\nvar myElement = document.getElementById('cartContent').innerHTML;\nvar nn = myElement.search('new'); \nmyElements.style.color = '#f00';",
-    	"ng": "angular.element($(':contains(\"foo\")'))",
-    	"yui": "Y.all(':contains(foo)')",
-    	"aui": "A.all(':contains(foo)')"
-    },
-    {
     	"jq": "$(':disabled')",
-    	"js": "var myElement = document.getElementsByTagName('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.disabled == true){\n        //code\n    }\n}",
+    	"js": "var myElement = document.getElementsByTagName('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.disabled == true){\n        //Your code\n    }\n}",
     	"ng": "angular.element($(':disabled'))",
     	"yui": "Y.all(':disabled')",
     	"aui": "A.all(':disabled')"
     },
     {
     	"jq": "$(':enabled')",
-    	"js": "var myElement = document.getElementsByTagName('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.disabled != true){\n        //code\n    }\n}",
+    	"js": "var myElement = document.getElementsByTagName('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.disabled != true){\n        //Your code\n    }\n}",
     	"ng": "angular.element($(':enabled'))",
     	"yui": "Y.all(':enabled')",
     	"aui": "A.all(':enabled')"
     },
     {
-    	"jq": "$(':empty')",
-    	"js": "myElement = document.getElementById('element').innerHTML === '';\nif (myElement) {\n    //code\n}",
-    	"ng": "angular.element($(':empty'))",
-    	"yui": "Y.all(':empty')",
-    	"aui": "A.all(':empty')"
-    },
-    {
 	"jq": "$(':parent')",
-	"js": "myElement = document.getElementById('element').innerHTML === '';\nif (!myElement) {\n    //code\n}",
+	"js": "myElement = document.getElementById('element').innerHTML === '';\nif (!myElement) {\n    //Your code\n}",
 	"ng": "angular.element($(':parent'))",
 	"yui": "Y.all(':not(:empty)')",
 	"aui": "A.all(':parent')"
@@ -100,44 +149,23 @@
     {
         "jq": "$('parent child:even')",
         "js": "...",
-        "ng": "angular.element($('parent child:even'))",
+        "ng": "ng-class-even='expression'",
         "yui": "Y.all('div').even()",
         "aui": "A.all('div').even()"
     },
     {
         "jq": "$('parent child:odd')",
         "js": "...",
-        "ng": "angular.element($('parent child:odd'))",
+        "ng": "ng-class-odd='expression'",
         "yui": "Y.all('div').odd()",
         "aui": "A.all('div').odd()"
     },
     {
     	"jq": "$(':file')",
-    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == 'file'){\n        //code\n     }\n}",
+    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == 'file'){\n        //Your code\n     }\n}",
     	"ng": "angular.element($(':file'))",
     	"yui": "Y.all('input[type=file]')",
     	"aui": "A.all(':file')"
-    },
-    {
-        "jq": "$(':first-child')",
-        "js": "document.getElementById('elementList').firstChild",
-        "ng": "angular.element($(':first-child'))",
-        "yui": "Y.all(':first-child')",
-        "aui": "A.all(':first-child')"
-    },
-    {
-        "jq": "$(':last-child')",
-        "js": "document.getElementById('elementList').lastChild",
-        "ng": "angular.element($(':last-child'))",
-        "yui": "Y.all(':last-child')",
-        "aui": "A.all(':last-child')"
-    },
-    {
-    	"jq": "$(':first')",
-    	"js": "document.getElementsByClassName('elementList')[0]",
-    	"ng": "angular.element($(':first'))",
-    	"yui": "Y.one('selectorname')",
-    	"aui": "A.one('selectorname')"
     },
     {
         "jq": "$('div').slice(n + 1);",
@@ -155,28 +183,28 @@
     },
     {
     	"jq": "$(':not(div)')",
-    	"js": "var myElement = document.getElementById('element');\n    if(myElement.tagName.toLowerCase() != 'div'){\n        //code\n     }",
+    	"js": "var myElement = document.getElementById('element');\n    if(myElement.tagName.toLowerCase() != 'div'){\n        //Your code\n     }",
     	"ng": "angular.element($(':not(div)'))",
 	"yui": "Y.all(':not(div)')",
 	"aui": "A.all(':not(div)')"
     },
     {
     	"jq": "$(':password')",
-    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"password\"){\n        //code\n     }\n}",
+    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"password\"){\n        //Your code\n     }\n}",
     	"ng": "angular.element($(':password'))",
     	"yui": "Y.all('input[type=password]')",
     	"aui": "A.all(':password')"
     },
     {
     	"jq": "$(':radio')",
-    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"radio\"){\n        //code\n     }\n}",
+    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"radio\"){\n        //Your code\n     }\n}",
     	"ng": "angular.element($(':radio'))",
     	"yui": "Y.all('input[type=radio]')",
     	"aui": "A.all(':radio')"
     },
     {
     	"jq": "$(':reset')",
-    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"reset\"){\n        //code\n     }\n}",
+    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"reset\"){\n        //Your code\n     }\n}",
     	"ng": "angular.element($(':reset'))",
     	"yui": "Y.all('input[type=reset]')",
     	"aui": "A.all(':reset')"
@@ -190,14 +218,14 @@
     },
     {
     	"jq": "$(':submit')",
-    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"submit\"){\n        //code\n     }\n}",
+    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"submit\"){\n        //Your code\n     }\n}",
     	"ng": "angular.element($(':submit'))",
     	"yui": "Y.all('input[type=submit]')",
     	"aui": "A.all(':submit')"
     },
     {
     	"jq": "$(':text')",
-    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"text\"){\n        //code\n     }\n}",
+    	"js": "var myElement = document.querySelectorAll('input');\nfor (var i = 0, element; element = myElement[i++];) {\n    if (element.type == \"text\"){\n        //Your code\n     }\n}",
     	"ng": "angular.element($(':text'))",
     	"yui": "Y.all('input[type=text]')",
     	"aui": "A.all(':text')"
