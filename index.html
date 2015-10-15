@@ -148,12 +148,12 @@
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.ng }}</code></pre>
 					</div>
 				  </div>
-				  <div class="card card__yui" ng-hide="yuiToggle">
+				  <div class="card card__yui" ng-show="yuiToggle">
 					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.yui }}</code></pre>
 					</div>
 				  </div>
-				  <div class="card card__aui" ng-hide="auiToggle">
+				  <div class="card card__aui" ng-show="auiToggle">
 					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.aui }}</code></pre>
 					</div>
@@ -335,6 +335,7 @@
 			}, 600);
 		});
 		function checkCodeLength(){
+			$('.inits h2 span').text($('.inits').find('.card-group').length);
 			$('.selectors h2 span').text($('.selectors').find('.card-group').length);
 			$('.events h2 span').text($('.events').find('.card-group').length);
 			$('.styles h2 span').text($('.styles').find('.card-group').length);
