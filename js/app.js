@@ -72,7 +72,7 @@ var app = angular.module("ifIUseApp",[]);
 		setSearchPlaceholder();
 		function setSearchPlaceholder(){
 			var activeFiltersPlaceholder = $('.filters').find(' > li > input:checkbox:checked').next().text();
-			$('.searchCode').attr('placeholder','Search '+activeFiltersPlaceholder.replace(/([a-z])([A-Z])/g, "$1 $2")+' query...');
+			$('.searchCode').attr('placeholder','Search '+activeFiltersPlaceholder.replace(/([a-z])([A-Z])/g, "$1 $2")+'...');
 		}
 		
 		$('.filter-dropdown input').on('change', function(){
