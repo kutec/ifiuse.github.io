@@ -27,7 +27,10 @@ nav .sharer {
     padding-top: 5px;
     padding-right: 10px;
 }
-.container {
+header .container {
+	font-size:0px;
+}
+	.container {
 	max-width: 95%;
 	width:100%;
 	margin: 0 auto;
@@ -127,15 +130,17 @@ ul{
 .filters li {
     display: inline-block;
 	position:relative;
+	margin-left: 1px;
 }
 .filter-dropdown{
 	display: inline-block;
 	position: relative;
 }
 .filters li label, .filter-dropdown label {
+	font-size:14px;
     color: #fff;
     text-decoration: none;
-    padding: 5px 10px;
+    padding: 5px 10px 2px;
     cursor:pointer;
     -webkit-user-select: none;/* Chrome all / Safari all */
     -moz-user-select: none;/* Firefox all */
@@ -146,17 +151,22 @@ ul{
     -o-transition: background ease-out 0.3s;
     transition: background ease-out 0.3s;
     display:block;
+    border-bottom:solid 3px #aaa;
 }
 .filters li input[type=checkbox], .filter-dropdown input[type=checkbox]{
 	position:absolute;
 	visibility:hidden
 }
 .filters li input[type=checkbox]:not(:checked) + label, .filter-dropdown input[type=checkbox]:not(:checked) + label{
-	background: #aaa;
+	/*background: #aaa;*/
 }
 .filter-dropdown > label{
     padding-right: 26px;
     background-color: #FF8C00;
+    border-color: #FF8C00;
+}
+.filter-dropdown li label{
+	border-color: #FF8C00;
 }
 .filter-dropdown label:hover + .filter-dropdown-list, .filter-dropdown-list:hover{
 	display:block;
@@ -164,53 +174,58 @@ ul{
 .filter-dropdown > label:before {
     content: '';
     position: absolute;
-    right: 10px;
+    right: 7px;
     top: 11px;
     border-top: solid 6px #CC7206;
     border-left: solid 6px transparent;
     border-right: solid 6px transparent;
 }
 .searchCode {
+	font-size:14px;
     padding: 5px;
     border: #e5e5e5 solid 1px;
     border-radius: 2px;
-    width: 300px;
+    width: 230px;
     font-size: 13px;
-    display: inline-block;
-    margin-top:10px;
+    display: block;
+    margin:10px auto 0;
 }
 .btn-jq {
     background-color: rgb(118, 201, 0);
 }
 input[type=checkbox]:checked + label.btn-jq{
     background-color: rgb(137, 222, 16);
+    border-color: rgb(120, 197, 11);
 }
 .btn-js {
     background-color: rgb(241, 196, 15);
 }
 input[type=checkbox]:checked + label.btn-js{
     background-color: rgb(241, 196, 0);
+    border-color: rgb(204, 166, 0);
 }
 .btn-ng {
     background-color: #D14;
 }
 input[type=checkbox]:checked + label.btn-ng{
 	background-color: rgba(229, 42, 58, 1);
+	border-color: rgb(199, 11, 27);
 }
 .btn-yui {
     background-color: #DA429C;
 }
 input[type=checkbox]:checked + label.btn-yui{
     background-color: rgba(62, 83, 157, 1);
+    border-color: rgb(0, 29, 132);
 }
 .btn-aui {
     background-color: #2bb2e4;
 }
 input[type=checkbox]:checked + label.btn-aui{
 	background-color: rgba(74, 180, 229, 1);
-    border-color: rgba(74, 180, 229, 1);
+    border-color: rgb(15, 127, 179);
 }
-.filters li label:hover{
+.filters li input[type=checkbox] + label:hover{
     background-color: #ccc;
 }
 .filters li.filter-dropdown label:hover{
@@ -441,9 +456,15 @@ footer a{
 	width: 100%;
 	height: 100%;
 }
-@media screen and (min-width: 800px) {
+.filter-wrapper{
+	display: inline-block;
+	margin: 0 auto;
+	clear:both;
+}
+@media screen and (min-width: 900px) {
 	.searchCode{
 		margin-top:0;
+		display: inline-block;
 	}
 	.card-group.card-group-head{
 		top: 58px;
@@ -455,9 +476,9 @@ footer a{
 		padding-top: 87px;
 	}
 }
-@media screen and (max-width: 540px) {
-	.filters{
-		margin-top:10px;
+@media screen and (max-width: 650px) {
+	.filter-wrapper{
+		display: block
 	}
 	header .container{
 		padding-bottom:11px;
@@ -507,13 +528,13 @@ footer a{
 		display:block
 	}
 	.validation.checkboxNtf{
-		top:108px
+		top:132px
 	}
 	.card-group.card-group-head{
 		display:none
 	}
 	.cards-wrapper{
-		padding-top: 93px;
+		padding-top: 117px;
 	}
 }
 .intro {
