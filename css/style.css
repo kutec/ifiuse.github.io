@@ -157,8 +157,8 @@ ul{
 	position:absolute;
 	visibility:hidden
 }
-.filters li input[type=checkbox]:not(:checked) + label, .filter-dropdown input[type=checkbox]:not(:checked) + label{
-	/*background: #aaa;*/
+.filter-dropdown input[type=checkbox]:not(:checked) + label{
+	border-color: #aaa;
 }
 .filter-dropdown > label{
     padding-right: 26px;
