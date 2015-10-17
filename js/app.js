@@ -53,14 +53,14 @@ var app = angular.module("ifIUseApp",[]);
 			if (chkChecked > 2){
 				$(this).parent().find('input:checkbox:not(:checked)').prop('disabled', true);
                 $(this).parent().find('input:checkbox:checked').prop('disabled', false);
-                $('.checkboxNtf').text('You can compare only 3 scrtips all togather.')
+                $('.checkboxNtf').text('You can compare only 3 scripts all together.')
                 $('.checkboxNtf').fadeIn().promise().done(function() {
 					$('.checkboxNtf').delay(1000).fadeOut("slow");
 				});
 			}else if(chkChecked <= 2){
 				$(this).parent().find('input:checkbox:checked').prop('disabled', true);
 				$(this).parent().find('input:checkbox:not(:checked)').prop('disabled', false);
-				$('.checkboxNtf').text('You have check minimum 2 scrtips all togather.')
+				$('.checkboxNtf').text('You can check minimum 2 scripts all together.')
 				$('.checkboxNtf').fadeIn().promise().done(function() {
 					$('.checkboxNtf').delay(1000).fadeOut("slow");
 				});
