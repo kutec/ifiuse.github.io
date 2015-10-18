@@ -237,6 +237,7 @@ ul.filter-dropdown-list {
     background-color: #FF8C00;
     top: 27px;
     display:none;
+    z-index:1;
 }
 .filter-dropdown-list li {
     border: solid 1px #DF7B03;
