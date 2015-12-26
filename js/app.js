@@ -48,8 +48,7 @@ var app = angular.module("ifIUseApp",[]);
 			}, 600);
 		});
         
-		var flAction = $('.filters--action input'),
-        //flActionNtf = $('.checkboxNtf');
+		var flAction = $('.filters--action input');
         
 		flAction.on('change', function(){
 			var chkChecked = flAction.filter(':checked').length,
