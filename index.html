@@ -6,163 +6,116 @@
 <title>if(iUse)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/style_new.css" />
 <link rel="stylesheet" type="text/css" href="css/prism.css" />
 <script type="text/javascript" src="js/angular.min.js"></script>
 </head>
 <body ng-controller="ifIUseCtrl">
-	<!-- side menu start -->
-	<nav class="side-navigation">
-		<a class="close-nav" href="javascript:void(0)">X</a>
-		<div class="intro">ifiuse.com is simple JS comparison gallery to compare latest and most useful JS libraries and frameworks like jQuery, Javascript, Angular JS, YUI and AUI. User can Search and filter their JS query</div>
-		<ul class="mainNav">
-		  <li>
-			<a href="ifiuse.github.io">Home</a>
-		  </li>
-		  <li>
-			<a href="Javascript:void(0)">About</a>
-		  </li>
-		  <li>
-			<a href="Javascript:void(0)">Contact</a>
-		  </li>
-		  <li>
-			<a href="Javascript:void(0)">Policy</a>
-		  </li>
-		</ul>
-		</br>
-		<span class="sharer sharer__twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ifiuse.com" data-via="kutec" data-related="teckstack" data-hashtags="ifiuse">Tweet</a></span>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-			<span class="sharer sharer__facebook">
-				<div id="fb-root"></div>
-				<script>(function(d, s, id) {
-				  var js, fjs = d.getElementsByTagName(s)[0];
-				  if (d.getElementById(id)) return;
-				  js = d.createElement(s); js.id = id;
-				  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4&appId=846745112106645";
-				  fjs.parentNode.insertBefore(js, fjs);
-				}(document, 'script', 'facebook-jssdk'));</script>
-				<div class="fb-share-button" data-href="http://ifiuse.com" data-layout="button_count"></div>
-			</span>
-	</nav>
-	<!-- side menu end -->
 	<!-- header start -->
-	<header>
-		<div class="container">
-			<h1 class="logo"><div class="logo__top"><div class="logo__bottom"></div></div><span>If I Use <em>Simple JS compare</em></span></h1>
-			<div class="filter-wrapper">
-				<div class="filter-dropdown">
-					<label>Filter</label>
-					<ul class="filter-dropdown-list">
+<header>
+    <menu>
+        <div class="container navigation clearfix">
+            <a class="logo" href="javascript:void(0)" title="If I Use : Simple JS compare">
+                <div class="logo--top">
+                    <div class="logo--bottom"></div>
+                </div><span>If I Use<em>Simple JS compare</em></span>
+            </a>
+            <ul class="filters">
+                <li class="filter--dropdown">
+                    <label class="btn-fl" title="Category Filter">Filter</label>
+					<ul class="filter--dropdown-list">
 						<li>
 							<input type="checkbox" checked="checked" id="chk-inits" ng-click="InitsToggle = !InitsToggle"/>
-							<label for="chk-inits">Initialization</label>
+							<label for="chk-inits" title="Initialization">Initialization</label>
 						</li>
 						<li>
 							<input type="checkbox" checked="checked" id="chk-selectors" ng-click="SelectorsToggle = !SelectorsToggle"/>
-							<label for="chk-selectors">Selectors</label>
+							<label for="chk-selectors" title="Selectors">Selectors</label>
 						</li>
 						<li>
 							<input type="checkbox" checked="checked" id="chk-events"  ng-click="EventsToggle = !EventsToggle"/>
-							<label for="chk-events">Events</label>
+							<label for="chk-events" title="Events">Events</label>
 						</li>
 						<li>
 							<input type="checkbox" checked="checked" id="chk-styles"  ng-click="StylesToggle = !StylesToggle"/>
-							<label for="chk-styles">CSS</label>
+							<label for="chk-styles" title="CSS">CSS</label>
 						</li>
 					</ul>
-				</div>
-				<ul class="filters">
-				<li>
+                </li>
+                <li class="filters--action">
 					<input type="checkbox" checked="checked" id="chk-jq" ng-click="jqToggle = !jqToggle"/>
-					<label for="chk-jq" class="btn-jq">Jquery</label>
+					<label for="chk-jq" class="btn-jq" title="Jquery"><span>Jq</span></label>
 				</li>
-				<li>
+				<li class="filters--action">
 					<input type="checkbox" checked="checked" id="chk-js" ng-click="jsToggle = !jsToggle"/>
-					<label for="chk-js" class="btn-js">Javascript</label>
+					<label for="chk-js" class="btn-js" title="Javascript"><span>Js</span></label>
 				</li>
-				<li>
+				<li class="filters--action">
 					<input type="checkbox" checked="checked" id="chk-ng" ng-click="ngToggle = !ngToggle"/>
-					<label for="chk-ng" class="btn-ng">Angular</label>
+					<label for="chk-ng" class="btn-ng" title="Angular"><span>Ng</span></label>
 				</li>
-				<li>
-					<input type="checkbox" id="chk-yui" ng-click="yuiToggle = !yuiToggle"/>
-					<label for="chk-yui" class="btn-yui">Yui</label>
+				<li class="filters--action">
+					<input type="checkbox" id="chk-yui" ng-click="yuiToggle = !yuiToggle" disabled />
+                    <label for="chk-yui" class="btn-yui" title="Yui"><span>Yui</span></label>
 				</li>
-				<li>
-					<input type="checkbox" id="chk-aui" ng-click="auiToggle = !auiToggle"/>
-					<label for="chk-aui" class="btn-aui">Aui</label>
+				<li class="filters--action">
+					<input type="checkbox" id="chk-aui" ng-click="auiToggle = !auiToggle" disabled />
+					<label for="chk-aui" class="btn-aui" title="Aui"><span>Aui</span></label>
 				</li>
-			</ul>
-			<input type="text" class="searchCode" ng-model="searchCode" placeholder="Search query..." />
-			</div>
-			<!--<a href="javascript:void(0)" class="navigation"></a>-->
-		</div>
-	</header>
-	<!-- header end -->
-	<!-- cards wrapper start -->
-	<div class="cards-wrapper">
-		<div class="main">
-			<div class="validation checkboxNtf">You can compare only 3 scripts all together</div>
-			<!-- card header start -->
-			<div class="card-group card-group-head">
+            </ul>
+            
+        </div>
+    </menu>
+    <!-- search container start -->
+    <section class="container search">
+        <input class="search--input" ng-model="searchCode" placeholder="Search query..." type="search" />
+    </section>
+    <!-- search container end -->
+</header>
+<!-- data container start -->
+<main class="cards-wrapper">
+    <section>
+        <div class="validation checkboxNtf">You can compare only 3 scripts all together.</div>
+        <!-- card header start -->
+        <div class="card-group card-group--head">
 				<div class="card card-head" id="box-jq" ng-hide="jqToggle">  
-					<div class="card-block">
 					  <h2>Jquery<span>(vs 2.1.1)<span></h2>
-					</div>
 				</div>
-				<div class="card card-head" id="box-js" ng-hide="jsToggle">   
-					<div class="card-block">
+				<div class="card card-head" id="box-js" ng-hide="jsToggle">
 					  <h2>Javascript<span>(vs 1.8.5)<span></h2>
-					</div>
 				</div>
 				<div class="card card-head" id="box-ng" ng-hide="ngToggle">
-					<div class="card-block">
 					  <h2>Angular<span>(vs 1.4.4)<span></h2>
-					</div>
 				</div>
 				<div class="card card-head" id="box-yui" ng-show="yuiToggle">
-					<div class="card-block">
 					  <h2>YUI<span>(vs 3.8.0)<span></h2>
-					</div>
 				</div>
 				<div class="card card-head" id="box-aui" ng-show="auiToggle">
-					<div class="card-block">
 					  <h2>AUI<span>(vs 3.0.0)<span></h2>
-					</div>
 				</div>
 			</div>
-			<!-- card header end -->
-			<!-- Initialization container start -->
+		<!-- card header end -->
+        <!-- card container start -->
+        <!-- Initialization container start -->
 			<div class="container cards-container inits" ng-controller="initCtrl" ng-hide="InitsToggle">
-				<h2 class="heading-group">
-					<strong>Initialization</strong><span>{{availableInits.length}}</span>
+				<h2>
+					Initialization<span>{{availableInits.length}}</span>
 				</h2>
 				<div class="card-group" ng-animate="'animate'" ng-repeat="init in availableInits = (inits | filter:searchCode)">
 				  <div class="card card__jq" ng-hide="jqToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.jq }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__js" ng-hide="jsToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.js }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__ng" ng-hide="ngToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.ng }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__yui" ng-show="yuiToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.yui }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__aui" ng-show="auiToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ init.aui }}</code></pre>
-					</div>
 				  </div>
 				</div>
 				<div class="validation">No Such Initialization are available.</div>
@@ -170,69 +123,49 @@
 			<!-- Initialization container end -->
 			<!-- selectors container start -->
 			<div class="container cards-container selectors" ng-controller="SelectorCtrl" ng-hide="SelectorsToggle">
-				<h2 class="heading-group">
-					<strong>Selectors</strong><span>{{availableSelectors.length}}</span>
+				<h2>
+					Selectors<span>{{availableSelectors.length}}</span>
 				</h2>
 				<div class="card-group" ng-animate="'animate'" ng-repeat="selector in availableSelectors = (selectors | filter:searchCode)">
 				  <div class="card card__jq" ng-hide="jqToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ selector.jq }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__js" ng-hide="jsToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ selector.js }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__ng" ng-hide="ngToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ selector.ng }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__yui" ng-show="yuiToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ selector.yui }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__aui" ng-show="auiToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ selector.aui }}</code></pre>
-					</div>
 				  </div>
 				</div>
 				<div class="validation">No Such Selectors are available.</div>
 			</div>
 			<!-- selectors container end -->
-			<!-- events container start -->
+            <!-- events container start -->
 			<div class="container cards-container events"  ng-controller="EventsCtrl" ng-hide="EventsToggle">
-				<h2 class="heading-group">
-					<strong>Events</strong><span>{{availableEvents.length}}</span>
+				<h2>
+					Events<span>{{availableEvents.length}}</span>
 				</h2>
 				<div class="card-group" ng-animate="'animate'" ng-repeat="event in availableEvents = (events | filter:searchCode)">
 				  <div class="card card__jq" ng-hide="jqToggle">    
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ event.jq }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__js" ng-hide="jsToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ event.js }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__ng" ng-hide="ngToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ event.ng }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__yui" ng-show="yuiToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ event.yui }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__aui" ng-show="auiToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ event.aui }}</code></pre>
-					</div>
 				  </div>
 				</div>
 				<div class="validation">No Such Events are available.</div>
@@ -240,65 +173,55 @@
 			<!-- events container end -->
 			<!-- styles container start -->
 			<div class="container cards-container styles"  ng-controller="StylesCtrl" ng-hide="StylesToggle">
-				<h2 class="heading-group">
-					<strong>CSS</strong><span>{{availableStyles.length}}</span>
+				<h2>
+					CSS<span>{{availableStyles.length}}</span>
 				</h2>
 				<div class="card-group" ng-animate="'animate'" ng-repeat="style in availableStyles = (styles | filter:searchCode)">
-				  <div class="card card__jq" ng-hide="jqToggle">    
-					<div class="card-block">
+				  <div class="card card__jq" ng-hide="jqToggle">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ style.jq }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__js" ng-hide="jsToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ style.js }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__ng" ng-hide="ngToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ style.ng }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__yui" ng-show="yuiToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ style.yui }}</code></pre>
-					</div>
 				  </div>
 				  <div class="card card__aui" ng-show="auiToggle">
-					<div class="card-block">
 					  <pre class="card-text language-javascript"><code class="langauge-javascript">{{ style.aui }}</code></pre>
-					</div>
 				  </div>
 				</div>
 				<div class="validation">No Such Styles are available.</div>
 			</div>
 			<!-- styles container end -->
-		</div>
-	</div>
-	<!-- cards wrapper end -->
-	<!-- footer start -->
-	<footer>
-		<div class="container">
+        <!-- card container end -->
+    </section>   
+</main>
+<!-- data container start -->
+<!-- footer start -->
+<footer>
+    <div class="container">
 			<span>&copy; <a href="http://ifiuse.com">ifiuse</a> | </span> 
 			<span><a href="https://github.com/ifiuse/ifiuse.github.io/blob/master/LICENSE" target="_blank">Licence</a></span>
 			<span><a href="https://twitter.com/kutec" class="twitter-follow-button" data-show-count="true">@kutec</a></span>
 			<span><a href="https://twitter.com/manishweb2009" class="twitter-follow-button" data-show-count="true">@manishweb</a></span>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		</div>
-	</footer>
-	<!-- footer end -->
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        
+        try {
+          var pageTracker = _gat._getTracker("UA-67493343-1");
+        pageTracker._trackPageview();
+        } catch(err) {}
+    </script>
+</footer>
+<!-- footer end -->
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/prism.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
-	<script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-        </script>
-        <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-67493343-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-        </script>
 </body>
 </html>
