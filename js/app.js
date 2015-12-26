@@ -42,53 +42,45 @@ var app = angular.module("ifIUseApp",[]);
 			Prism.highlightAll();
 		}, 2000);
 		
-		$('.searchCode').on('keyup', function(){
+		$('.search--input').on('keyup', function(){
 			Prism.highlightAll();
 			setTimeout(function(){
 			}, 600);
 		});
-		
-		$('.filters > li:not(.filter-dropdown)').click(function(){
-			var chkChecked = $(this).parent().find('input:checkbox:checked').length;
-			if (chkChecked > 2){
-				$(this).parent().find('input:checkbox:not(:checked)').prop('disabled', true);
-                $(this).parent().find('input:checkbox:checked').prop('disabled', false);
-                $('.checkboxNtf').text('You can compare only 3 scripts all together.')
-                $('.checkboxNtf').fadeIn().promise().done(function() {
-					$('.checkboxNtf').delay(1000).fadeOut("slow");
-				});
-			}else if(chkChecked <= 2){
-				$(this).parent().find('input:checkbox:checked').prop('disabled', true);
-				$(this).parent().find('input:checkbox:not(:checked)').prop('disabled', false);
-				$('.checkboxNtf').text('You can check minimum 2 scripts all together.')
-				$('.checkboxNtf').fadeIn().promise().done(function() {
-					$('.checkboxNtf').delay(1000).fadeOut("slow");
-				});
-			}else{
-				$(this).parent().find('input:checkbox:not(:checked)').prop('disabled', false);
-			}
+        
+		var flAction = $('.filters--action input'),
+        //flActionNtf = $('.checkboxNtf');
+        
+		flAction.on('change', function(){
+			var chkChecked = flAction.filter(':checked').length,
+                chkUnChecked = flAction.filter(':not(:checked)').length;
+            
+			if (chkChecked == 3){
+				flAction.filter(':not(:checked)').prop('disabled', true);
+                flAction.filter(':checked').prop('disabled', false);
+			}else if(chkChecked == 2){
+				flAction.filter(':checked').prop('disabled', true);
+				flAction.filter(':not(:checked)').prop('disabled', false);
+			}            
 			setSearchPlaceholder();
 		});
+        
 		setSearchPlaceholder();
 		function setSearchPlaceholder(){
-			var activeFiltersPlaceholder = $('.filters').find(' > li > input:checkbox:checked').next().text();
-			$('.searchCode').attr('placeholder','Search '+activeFiltersPlaceholder.replace(/([a-z])([A-Z])/g, "$1 $2")+'...');
+            var getTitle = [];
+                flAction.filter(':checked').each(function(){
+                    getTitle.push($(this).next().attr('title'));
+                });
+			$('.search--input').attr('placeholder','Search '+ getTitle.join(", ") +'...');
 		}
 		
-		$('.filter-dropdown input').on('change', function(){
-			var chkChecked = $(this).parents('.filter-dropdown').find('input:checkbox:checked').length;
+        var flDropdown = $('.filter--dropdown input');
+		flDropdown.on('change', function(){
+			var chkChecked = flDropdown.filter(':checked').length;
 			if(chkChecked == 1){
-				$(this).parents('.filter-dropdown').find('input:checkbox:checked').prop('disabled', true)
+				flDropdown.filter(':checked').prop('disabled', true)
 			}else{
-				$(this).parents('.filter-dropdown').find('input:checkbox:checked').prop('disabled', false)
+				flDropdown.filter(':checked').prop('disabled', false)
 			}
-		});
-		
-		$('.close-nav').click(function(){
-		     $(this).parent('nav').removeClass('active')
-		});
-		
-		$('.navigation').click(function(){
-		     $('.side-navigation').addClass('active')
 		});
 	});
